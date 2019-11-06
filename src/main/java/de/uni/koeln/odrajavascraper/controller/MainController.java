@@ -28,13 +28,13 @@ public class MainController {
     public List<Article> index() throws IOException {
 
         List<Article> articleList = new ArrayList<>();
-
         for (String link : pikioScraper.getNewsUrlList()) {
-            articleList.add(pikioScraper.scrape(link));
+            Article article = pikioScraper.scrape(link);
+            if (article != null) {
+                articleList.add(article);
+            }
         }
-
         return articleList;
-
     }
 
 
@@ -42,22 +42,19 @@ public class MainController {
     public List<Article> spiegel() throws IOException {
 
         List<Article> articleList = new ArrayList<>();
-
         for (String link : spiegelScraper.getNewsUrlList()) {
-            articleList.add(spiegelScraper.scrape(link));
+            Article article = spiegelScraper.scrape(link);
+            if (article != null) {
+                articleList.add(article);
+            }
         }
-
         return articleList;
-
     }
 
 
     @GetMapping(value = "/")
     public String empty() throws IOException {
-
-
         return "<h1>No route found. Please go to /spiegel or /pikio</h1>";
-
     }
 
 

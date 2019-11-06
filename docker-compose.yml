@@ -2,6 +2,8 @@ version: '3'
 services:
   odra-pikio-scraper:
     image: ddmr/odra-test
+    ports:
+      - "8080:8080"
   odra-scraper-controller:
     image: ddmr/odra-scraper-controller
     ports:

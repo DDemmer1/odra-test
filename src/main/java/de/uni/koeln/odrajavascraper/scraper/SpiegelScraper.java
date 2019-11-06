@@ -44,6 +44,9 @@ public class SpiegelScraper extends Scraper {
         //TOPIC
         Elements topicContainer = doc.body().getElementsByClass("current-channel-name");
         String topic = topicContainer.size() > 0 ? topicContainer.get(0).text() : "";
+        if(topic.equals("Video")){
+            return null;
+        }
 
         //CREATIONDATE
         String creationDate = doc.body().getElementsByClass("article-function-date").text();
