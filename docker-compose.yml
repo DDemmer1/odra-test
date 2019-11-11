@@ -1,16 +1,16 @@
 version: '3'
 services:
-  odra-pikio-scraper:
+  odra-scraper:
     image: ddmr/odra-test
     ports:
-      - "8080:8080"
+      - "8081:8081"
   odra-scraper-controller:
     image: ddmr/odra-scraper-controller
     ports:
       - "8080:8080"
     depends_on:
       - "odra-database"
-      - "odra-pikio-scraper"
+      - "odra-scraper"
   odra-database:
     image: mysql:latest
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci

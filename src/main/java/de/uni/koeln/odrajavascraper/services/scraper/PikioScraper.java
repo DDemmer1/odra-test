@@ -1,4 +1,4 @@
-package de.uni.koeln.odrajavascraper.scraper;
+package de.uni.koeln.odrajavascraper.services.scraper;
 
 
 import de.uni.koeln.odrajavascraper.entities.Article;

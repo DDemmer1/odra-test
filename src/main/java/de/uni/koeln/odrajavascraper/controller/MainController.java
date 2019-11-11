@@ -2,8 +2,8 @@ package de.uni.koeln.odrajavascraper.controller;
 
 
 import de.uni.koeln.odrajavascraper.entities.Article;
-import de.uni.koeln.odrajavascraper.scraper.PikioScraper;
-import de.uni.koeln.odrajavascraper.scraper.SpiegelScraper;
+import de.uni.koeln.odrajavascraper.services.scraper.PikioScraper;
+import de.uni.koeln.odrajavascraper.services.scraper.SpiegelScraper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package de.uni.koeln.odrajavascraper.scraper;
+package de.uni.koeln.odrajavascraper.services.scraper;
 
 
 import com.rometools.rome.feed.synd.SyndEntry;
@@ -8,7 +8,6 @@ import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 import de.uni.koeln.odrajavascraper.entities.Article;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +49,9 @@ public class SpiegelScraper extends Scraper {
 
         //CREATIONDATE
         String creationDate = doc.body().getElementsByClass("article-function-date").text();
+
+        creationDate = creationDate.replaceAll("(?<=2019).*$","");
+        creationDate = creationDate.replaceAll("Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag|,|\\s", "");
 
 
         Article article = new Article();
