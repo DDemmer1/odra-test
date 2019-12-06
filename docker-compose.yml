@@ -1,16 +1,11 @@
 version: '3'
 services:
   odra-scraper:
-    image: ddmr/odra-test
+    build: .
+    image: ddmr/odra-test:latest
     ports:
       - "8081:8081"
-  odra-scraper-controller:
-    image: ddmr/odra-scraper-controller
-    ports:
-      - "8080:8080"
-    depends_on:
-      - "odra-database"
-      - "odra-scraper"
+
   odra-database:
     image: mysql:latest
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
@@ -21,3 +16,20 @@ services:
        MYSQL_ROOT_PASSWORD: 'odra'
     ports:
       - "3306:3306"
+
+  odra-scraper-controller:
+    build: .
+    image: ddmr/odra-scraper-controller:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "odra-database"
+      - "odra-scraper"
+
+  odra-react-client:
+    build: .
+    image: ddmr/odra-react-client:latest
+    ports:
+      - "80:80"
+    depends_on:
+          - "odra-scraper-controller"
