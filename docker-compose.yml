@@ -1,7 +1,6 @@
 version: '3'
 services:
   odra-scraper:
-    build: .
     image: ddmr/odra-test:latest
     ports:
       - "8081:8081"
@@ -18,7 +17,6 @@ services:
       - "3306:3306"
 
   odra-scraper-controller:
-    build: .
     image: ddmr/odra-scraper-controller:latest
     ports:
       - "8080:8080"
@@ -27,7 +25,6 @@ services:
       - "odra-scraper"
 
   odra-react-client:
-    build: .
     image: ddmr/odra-react-client:latest
     ports:
       - "80:80"
