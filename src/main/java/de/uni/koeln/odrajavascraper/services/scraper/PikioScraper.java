@@ -62,10 +62,10 @@ public class PikioScraper extends Scraper {
         Article article = new Article();
         article.setHeadline(headline);
         article.setSource("https://pikio.pl");
-        article.setSourceName("pikio");
+        article.setSource_name("pikio");
         article.setTextBody(textBody);
-        article.setCrawlDate(new Date());
-        article.setCreationDate(creationDate);
+        article.setCrawl_date(new Date());
+        article.setCreation_date(creationDate);
         article.setAuthor(author);
         article.setLink(url);
         article.setTopic(topic);

@@ -58,10 +58,10 @@ public class SpiegelScraper extends Scraper {
         article.setLink(url);
         article.setHeadline(headline);
         article.setSource("https://www.spiegel.de");
-        article.setSourceName("spiegel");
+        article.setSource_name("spiegel");
         article.setTextBody(textBody);
-        article.setCrawlDate(new Date());
-        article.setCreationDate(creationDate);
+        article.setCrawl_date(new Date());
+        article.setCreation_date(creationDate);
         article.setAuthor(author);
         article.setLink(url);
         article.setTopic(topic);
