@@ -10,12 +10,12 @@ public class Article {
     private String headline;
     private String textBody;
     private String source;
-    private String source_name;
+    private String sourceName;
     private String author;
     private String topic;
     private String link;
-    private Date crawl_date;
-    private String creation_date;
+    private Date crawlDate;
+    private String creationDate;
 
 
     public Article(){
@@ -23,16 +23,16 @@ public class Article {
     }
 
 
-    public Article(String headline, String textBody, String source, String source_name, String author, String topic, String link, Date crawl_date, String creation_date) {
+    public Article(String headline, String textBody, String source, String sourceName, String author, String topic, String link, Date crawlDate, String creationDate) {
         this.headline = headline;
         this.textBody = textBody;
         this.source = source;
-        this.source_name = source_name;
+        this.sourceName = sourceName;
         this.author = author;
         this.topic = topic;
         this.link = link;
-        this.crawl_date = crawl_date;
-        this.creation_date = creation_date;
+        this.crawlDate = crawlDate;
+        this.creationDate = creationDate;
     }
 
     public String getHeadline() {
@@ -59,12 +59,12 @@ public class Article {
         this.source = source;
     }
 
-    public String getSource_name() {
-        return source_name;
+    public String getSourceName() {
+        return sourceName;
     }
 
-    public void setSource_name(String source_name) {
-        this.source_name = source_name;
+    public void setSourceName(String sourceName) {
+        this.sourceName = sourceName;
     }
 
     public String getAuthor() {
@@ -91,19 +91,19 @@ public class Article {
         this.link = link;
     }
 
-    public Date getCrawl_date() {
-        return crawl_date;
+    public Date getCrawlDate() {
+        return crawlDate;
     }
 
-    public void setCrawl_date(Date crawl_date) {
-        this.crawl_date = crawl_date;
+    public void setCrawlDate(Date crawlDate) {
+        this.crawlDate = crawlDate;
     }
 
-    public String getCreation_date() {
-        return creation_date;
+    public String getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreation_date(String creation_date) {
-        this.creation_date = creation_date;
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 }

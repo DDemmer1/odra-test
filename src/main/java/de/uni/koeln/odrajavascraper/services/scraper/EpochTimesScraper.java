@@ -26,11 +26,9 @@ public class EpochTimesScraper extends Scraper {
 	            Document doc = openURL("https://www.epochtimes.de/");
 	            List<String> links = new ArrayList<>();
 	            for (Element e : doc.body().getElementsByClass("article")) {
-	            	System.out.println(e);
 	            	String linkText = e.getElementsByTag("a").get(0).attr("href");
 	            	if(!(linkText.contains("video"))) {
 	                    links.add(linkText);
-	                    System.out.println(linkText);
 	            	}
 	            }
 	            return links;
@@ -72,10 +70,10 @@ public class EpochTimesScraper extends Scraper {
 		   Article article = new Article();
 	        article.setHeadline(headline);
 	        article.setSource("https://www.epochtimes.de/");
-	        article.setSource_name("epoch");
+	        article.setSourceName("epoch");
 	        article.setTextBody(textBody);
-	        article.setCrawl_date(new Date());
-	        article.setCreation_date(creationDate);
+	        article.setCrawlDate(new Date());
+	        article.setCreationDate(creationDate);
 	        article.setAuthor(author);
 	        article.setLink(url);
 	        article.setTopic(topic); 

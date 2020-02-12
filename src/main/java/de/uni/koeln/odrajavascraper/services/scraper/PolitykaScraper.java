@@ -55,10 +55,10 @@ public class PolitykaScraper extends Scraper {
         Article article = new Article();
         article.setHeadline(headline);
         article.setSource("https://www.polityka.pl");
-        article.setSource_name("polityka");
+        article.setSourceName("polityka");
         article.setTextBody(textBody);
-        article.setCrawl_date(new Date());
-        article.setCreation_date(creationDate);
+        article.setCrawlDate(new Date());
+        article.setCreationDate(creationDate);
         article.setAuthor(author);
         article.setLink(url);
         article.setTopic(topic);

@@ -53,10 +53,10 @@ public class FazScraper extends Scraper{
         Article article = new Article();
         article.setHeadline(headline);
         article.setSource("https://www.faz.net/aktuell/");
-        article.setSource_name("faz");
+        article.setSourceName("faz");
         article.setTextBody(textBody);
-        article.setCrawl_date(new Date());
-        article.setCreation_date(null);
+        article.setCrawlDate(new Date());
+        article.setCreationDate(null);
         article.setAuthor(author);
         article.setLink(url);
         article.setTopic(topic);

@@ -35,7 +35,6 @@ public class PrzekrojScraper extends Scraper {
             			|| linkText.contains("rysunki") || linkText.equals("")
             			)) {
                     links.add("https://przekroj.pl" + linkText);
-                    System.out.println("https://przekroj.pl" + e.attr("href"));
             	}
             }
             return links;

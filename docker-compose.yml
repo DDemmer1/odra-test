@@ -8,6 +8,14 @@ services:
     networks:
       - backend
 
+# News Scraper in Python
+  odra-scraper-python:
+    image: ddmr/odra-scraper-python:latest
+    restart: always
+    networks:
+      - backend
+
+
 # Twitter Scraper
   odra-twitter-scraper:
     image: ddmr/odra-twitter-scraper:latest
@@ -33,9 +41,9 @@ services:
        - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
        - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
        - LOGGING_LEVEL_ORG_HIBERNATE_SQL=ERROR
-        #  Change default pw's in production!
+        ###  Change default PW/KEY in production!! ###
        - APP_ADMIN_PW=secret
-       - APP_JWTSECRET=JWTSuperSecretKey
+       - APP_JWTSECRET=JWTsuperSecretKey
      depends_on:
        - "odra-gw-db"
      networks:
@@ -79,8 +87,6 @@ services:
   odra-scraper-controller:
     image: ddmr/odra-scraper-controller:latest
     restart: always
-    ports:
-      - "8080:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://odra-sc-db:3306/odra?useUnicode=true&serverTimezone=UTC&useSSL=false&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&autoReconnect=true
       - SPRING_DATASOURCE_USERNAME=odra
@@ -88,10 +94,44 @@ services:
       - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
       - LOGGING_LEVEL_ORG_HIBERNATE_SQL=ERROR
-      - SCRAPER_URLS=   http://odra-scraper-java:8081/spiegel,
-                        http://odra-scraper-java:8081/pikio
-      - SCRAPER_NAMES=  spiegel,
-                        pikio
+      - SCRAPER_URLS=   http://odra-scraper-java:8081/pikio,
+                        http://odra-scraper-java:8081/epoch,
+                        http://odra-scraper-java:8081/faz,
+                        http://odra-scraper-java:8081/oko,
+                        http://odra-scraper-java:8081/zeit,
+                        http://odra-scraper-java:8081/polityka,
+                        http://odra-scraper-java:8081/przekroy,
+                        http://odra-scraper-python/super-express,
+                        http://odra-scraper-python/german-times,
+                        http://odra-scraper-python/naszdziennik,
+                        http://odra-scraper-python/theeuropean,
+                        http://odra-scraper-python/warsawvoice,
+                        http://odra-scraper-python/tagesschau,
+                        http://odra-scraper-python/polsatnews,
+                        http://odra-scraper-python/rotefahne,
+                        http://odra-scraper-python/blaetter,
+                        http://odra-scraper-python/wprost,
+                        http://odra-scraper-python/bbc
+
+      - SCRAPER_NAMES=  pikio,
+                        epoch,
+                        faz,
+                        oko,
+                        zeit,
+                        polityka,
+                        przekroy,
+                        super-express,
+                        german-times,
+                        naszdziennik,
+                        theeuropean,
+                        warsawvoice,
+                        tagesschau,
+                        polsatnews,
+                        rotefahne,
+                        blaetter,
+                        wprost,
+                        bbc
+
       - SCRAPER_INTERVALL=3600000
       - TWITTER_SCRAPER_URL=http://odra-twitter-scraper:8081
     depends_on:
@@ -103,10 +143,11 @@ services:
 
 #Frontend Client
   odra-react-client:
+    build: .
     image: ddmr/odra-react-client:latest
     restart: always
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
           - "odra-scraper-controller"
     networks:

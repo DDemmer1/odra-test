@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.jsoup.nodes.Document;
 import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
@@ -110,10 +109,10 @@ public class ZeitScraper extends Scraper {
         article.setLink(url);
         article.setHeadline(headline);
         article.setSource("https://www.zeit.de");
-        article.setSource_name("zeit");
+        article.setSourceName("zeit");
         article.setTextBody(textBody);
-        article.setCrawl_date(new Date());
-        article.setCreation_date(creationDate);
+        article.setCrawlDate(new Date());
+        article.setCreationDate(creationDate);
         article.setAuthor(author);
         article.setLink(url);
         article.setTopic(topic);
@@ -124,9 +123,9 @@ public class ZeitScraper extends Scraper {
             json.put("headline", headline);
             json.put("textBody", textBody);
             json.put("source", article.getSource());
-            json.put("sourceName", article.getSource_name());
+            json.put("sourceName", article.getSourceName());
             json.put("topic", topic);
-            json.put("crawlDate", article.getCrawl_date());
+            json.put("crawlDate", article.getCrawlDate());
             json.put("creationDate", creationDate);
 
             //createFile(json);

@@ -71,10 +71,10 @@ public class OkoScraper extends Scraper {
         article.setLink(url);
         article.setHeadline(headline);
         article.setSource("https://oko.press/");
-        article.setSource_name("oko");
+        article.setSourceName("oko");
         article.setTextBody(textBody);
-        article.setCrawl_date(new Date());
-        article.setCreation_date(creationDate);
+        article.setCrawlDate(new Date());
+        article.setCreationDate(creationDate);
         article.setAuthor(author);
         article.setLink(url);
 //        article.setTopic(topic);
