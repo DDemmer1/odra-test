@@ -27,7 +27,7 @@ public class EpochTimesScraper extends Scraper {
 	            List<String> links = new ArrayList<>();
 	            for (Element e : doc.body().getElementsByClass("article")) {
 	            	String linkText = e.getElementsByTag("a").get(0).attr("href");
-	            	if(!(linkText.contains("video"))) {
+	            	if((!(linkText.contains("video")) && (linkText.endsWith(".html")))) {
 	                    links.add(linkText);
 	            	}
 	            }

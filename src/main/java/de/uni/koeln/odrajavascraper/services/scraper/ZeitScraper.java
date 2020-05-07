@@ -52,10 +52,12 @@ public class ZeitScraper extends Scraper {
     @Override
     public Article scrape(String url) throws IOException, FeedException {
 
-        // System.out.println(url);
+        if(url.split("/")[3].equals("video")){
+            return null;
+        }
+
 
         Document doc = openURL(url);
-
         // Bei Paywall, keinen Artikel speichern
         String zplus = doc.getElementsByClass("zplus-badge__text").text().toString();
         if (!zplus.isEmpty()) {
@@ -71,10 +73,21 @@ public class ZeitScraper extends Scraper {
 
         // HEADLINE
         String headline = doc.body().getElementsByClass("article-heading__title").text().toString();
+        if(headline.equals("")){
+            headline = doc.body().getElementsByClass("headline").text();
+        }
+        if(headline.equals("")){
+            headline = doc.body().getElementsByClass("column-heading__title").text();
+        }
+
+
         // System.out.println(headline);
 
         // TEXTBODY
-        String textBody = doc.body().getElementsByClass("paragraph article__item").text().toString();
+        String textBody = doc.body().getElementsByClass("paragraph article__item").text();
+        if(textBody.equals("")){
+            textBody = doc.body().getElementsByClass("article-body").text();
+        }
         // System.out.println(textBody);
 
         // AUTHOR
@@ -98,11 +111,11 @@ public class ZeitScraper extends Scraper {
         }
 
         // TOPIC
-        String topic = doc.getElementsByClass("breadcrumbs__link").text().toString();
-        topic = topic.replace("Start", "").replace(" ", "").replace("ZEIT", "");
+        String topic = doc.getElementsByClass("nav__ressorts-link--current").text();
 
         // Date
         String creationDate = doc.getElementsByClass("metadata__date").text().toString();
+        creationDate = creationDate.replaceAll("(?<=2020).*$","");
 
         Article article = new Article();
 
@@ -116,23 +129,6 @@ public class ZeitScraper extends Scraper {
         article.setAuthor(author);
         article.setLink(url);
         article.setTopic(topic);
-
-        JSONObject json = new JSONObject();
-        try {
-            json.put("link", url);
-            json.put("headline", headline);
-            json.put("textBody", textBody);
-            json.put("source", article.getSource());
-            json.put("sourceName", article.getSourceName());
-            json.put("topic", topic);
-            json.put("crawlDate", article.getCrawlDate());
-            json.put("creationDate", creationDate);
-
-            //createFile(json);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
         return article;
     }

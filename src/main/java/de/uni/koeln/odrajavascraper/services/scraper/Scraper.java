@@ -26,6 +26,7 @@ public abstract class Scraper {
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+        con.addRequestProperty("Cookie", "zonconsent=2020-05-07T07:11:50.526Z");
 
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
