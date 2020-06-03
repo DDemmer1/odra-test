@@ -3,6 +3,7 @@ services:
 
 # News Scraper in Java
   odra-scraper-java:
+    build: .
     image: ddmr/odra-test:latest
     restart: always
     networks:
@@ -10,6 +11,7 @@ services:
 
 # News Scraper in Python
   odra-scraper-python:
+    build: .
     image: ddmr/odra-scraper-python:latest
     restart: always
     networks:
@@ -95,6 +97,13 @@ services:
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
       - LOGGING_LEVEL_ORG_HIBERNATE_SQL=ERROR
       - SCRAPER_URLS=   http://odra-scraper-java:8081/pikio,
+                        http://odra-scraper-java:8081/polskieradio,
+                        http://odra-scraper-java:8081/rzeczpospolita,
+                        http://odra-scraper-java:8081/gazetaprawna,
+                        http://odra-scraper-java:8081/tvp,
+                        http://odra-scraper-java:8081/tvn24,
+                        http://odra-scraper-java:8081/gazeta,
+                        http://odra-scraper-java:8081/spiegel,
                         http://odra-scraper-java:8081/epoch,
                         http://odra-scraper-java:8081/faz,
                         http://odra-scraper-java:8081/oko,
@@ -114,6 +123,13 @@ services:
                         http://odra-scraper-python/bbc
 
       - SCRAPER_NAMES=  pikio,
+                        polskieradio,
+                        rzeczpospolita,
+                        gazetaprawna,
+                        tvp,
+                        tvn24,
+                        gazeta,
+                        spiegel,
                         epoch,
                         faz,
                         oko,

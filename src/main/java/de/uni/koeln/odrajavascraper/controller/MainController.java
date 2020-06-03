@@ -49,6 +49,27 @@ public class MainController {
     @Autowired
     ZeitScraper zeitScraper;
 
+    @Autowired
+    GazetaScraper gazetaScraper;
+
+    @Autowired
+    Tvn24Scraper tvn24Scraper;
+
+    @Autowired
+    TvpScraper tvpScraper;
+
+    @Autowired
+    GazetaprawnaScraper gazetaprawnaScraper;
+
+    @Autowired
+    WyborczaScraper wyborczaScraper;
+
+    @Autowired
+    RzeczpospolitaScraper rzeczpospolitaScraper;
+
+    @Autowired
+    PolskieradioScraper polskieradioScraper;
+
 
     private List<Article> scrape(Scraper scraper) {
         try {
@@ -111,6 +132,41 @@ public class MainController {
         return scrape(zeitScraper);
     }
 
+    @GetMapping(value = "/gazeta")
+    public List<Article> gazeta() throws IOException {
+        return scrape(gazetaScraper);
+    }
+
+
+    @GetMapping(value = "/tvn24")
+    public List<Article> tvn24() throws IOException {
+        return scrape(tvn24Scraper);
+    }
+
+    @GetMapping(value = "/tvp")
+    public List<Article> tvp() throws IOException {
+        return scrape(tvpScraper);
+    }
+
+    @GetMapping(value = "/gazetaprawna")
+    public List<Article> gazetaprawna() throws IOException {
+        return scrape(gazetaprawnaScraper);
+    }
+
+    @GetMapping(value = "/wyborcza")
+    public List<Article> wyborcza() throws IOException {
+        return scrape(wyborczaScraper);
+    }
+
+    @GetMapping(value = "/rzeczpospolita")
+    public List<Article> rzeczpospolita() throws IOException {
+        return scrape(rzeczpospolitaScraper);
+    }
+
+    @GetMapping(value = "/polskieradio")
+    public List<Article> polskieradio() throws IOException {
+        return scrape(polskieradioScraper);
+    }
 
     @GetMapping(value = "/")
     public List<String> mappings() throws IOException, JSONException {

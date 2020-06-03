@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public abstract class Scraper {
@@ -22,13 +24,20 @@ public abstract class Scraper {
      * @throws IOException
      */
     public Document openURL(String urlStr) throws IOException {
+            return openURL(urlStr,StandardCharsets.UTF_8);
+    }
+
+
+
+    public Document openURL(String urlStr,Charset charset) throws IOException {
+
         URL url = new URL(urlStr);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
         con.addRequestProperty("Cookie", "zonconsent=2020-05-07T07:11:50.526Z");
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), charset));
 
         String inputLine;
         StringBuffer content = new StringBuffer();
@@ -39,7 +48,9 @@ public abstract class Scraper {
         con.disconnect();
 
         String siteContent = content.toString();
+
         return Jsoup.parse(siteContent);
+
     }
 
 
