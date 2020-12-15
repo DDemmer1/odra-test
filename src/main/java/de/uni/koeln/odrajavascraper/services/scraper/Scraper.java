@@ -44,6 +44,7 @@ public abstract class Scraper {
         while ((inputLine = in.readLine()) != null) {
             content.append(inputLine);
         }
+
         in.close();
         con.disconnect();
 

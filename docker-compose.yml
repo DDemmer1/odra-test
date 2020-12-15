@@ -96,57 +96,13 @@ services:
       - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
       - LOGGING_LEVEL_ORG_HIBERNATE_SQL=ERROR
-      - SCRAPER_URLS=   http://odra-scraper-java:8081/pikio,
-                        http://odra-scraper-java:8081/polskieradio,
-                        http://odra-scraper-java:8081/rzeczpospolita,
-                        http://odra-scraper-java:8081/gazetaprawna,
-                        http://odra-scraper-java:8081/tvp,
-                        http://odra-scraper-java:8081/tvn24,
-                        http://odra-scraper-java:8081/gazeta,
-                        http://odra-scraper-java:8081/spiegel,
-                        http://odra-scraper-java:8081/epoch,
-                        http://odra-scraper-java:8081/faz,
-                        http://odra-scraper-java:8081/oko,
-                        http://odra-scraper-java:8081/zeit,
-                        http://odra-scraper-java:8081/polityka,
-                        http://odra-scraper-java:8081/przekroy,
-                        http://odra-scraper-python/super-express,
-                        http://odra-scraper-python/german-times,
-                        http://odra-scraper-python/naszdziennik,
-                        http://odra-scraper-python/theeuropean,
-                        http://odra-scraper-python/warsawvoice,
-                        http://odra-scraper-python/tagesschau,
-                        http://odra-scraper-python/polsatnews,
-                        http://odra-scraper-python/rotefahne,
-                        http://odra-scraper-python/blaetter,
-                        http://odra-scraper-python/wprost,
-                        http://odra-scraper-python/bbc
+      - SCRAPER_URLS=   http://odra-scraper-java:8081/faz,
+                        http://odra-scraper-java:8081/monopol,
+                        http://odra-scraper-java:8081/kunstforum
 
-      - SCRAPER_NAMES=  pikio,
-                        polskieradio,
-                        rzeczpospolita,
-                        gazetaprawna,
-                        tvp,
-                        tvn24,
-                        gazeta,
-                        spiegel,
-                        epoch,
-                        faz,
-                        oko,
-                        zeit,
-                        polityka,
-                        przekroy,
-                        super-express,
-                        german-times,
-                        naszdziennik,
-                        theeuropean,
-                        warsawvoice,
-                        tagesschau,
-                        polsatnews,
-                        rotefahne,
-                        blaetter,
-                        wprost,
-                        bbc
+      - SCRAPER_NAMES=  faz,
+                        monopol,
+                        kunstforum
 
       - SCRAPER_INTERVALL=3600000
       - TWITTER_SCRAPER_URL=http://odra-twitter-scraper:8081

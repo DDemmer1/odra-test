@@ -70,6 +70,12 @@ public class MainController {
     @Autowired
     PolskieradioScraper polskieradioScraper;
 
+    @Autowired
+    KunstforumInternationalScraper kunstforumInternationalScraper;
+
+    @Autowired
+    MonopolScraper monopolScraper;
+
 
     private List<Article> scrape(Scraper scraper) {
         try {
@@ -166,6 +172,18 @@ public class MainController {
     @GetMapping(value = "/polskieradio")
     public List<Article> polskieradio() throws IOException {
         return scrape(polskieradioScraper);
+    }
+
+
+    @GetMapping(value = "/monopol")
+    public List<Article> monopol() throws IOException {
+        return scrape(monopolScraper);
+    }
+
+
+    @GetMapping(value = "/kunstforum")
+    public List<Article> kunstforum() throws IOException {
+        return scrape(kunstforumInternationalScraper);
     }
 
     @GetMapping(value = "/")
